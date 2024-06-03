@@ -2,7 +2,7 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 const https = require('https');
-const PaytmChecksum = require('paytmchecksum');
+// const PaytmChecksum = require('paytmchecksum');
 
 module.exports = createCoreController('api::order.order', ({ strapi }) => ({
     // Method 1: Creating an entirely custom action
@@ -50,10 +50,10 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
         * Generate checksum by parameters we have in body
         * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
         */
-        let checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.MKEY)
+        /* let checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.MKEY)
         paytmParams.head = {
             "signature": checksum
-        };
+        };  */
 
         var post_data = JSON.stringify(paytmParams);
 
